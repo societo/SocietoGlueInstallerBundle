@@ -1,0 +1,28 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+
+{% set title = "Step3. Write configuration" %}
+
+{% extends 'SocietoGlueInstallerBundle::install_base.html.twig' %}
+
+{% block body %}
+{% if is_writable %}
+    <p>Your parameters.ini has been overwritten with these parameters (in <em>{{ ini_path }}</em>):</p>
+{% else %}
+    <p class="error">Your parameters.ini file is not writeable! Here are the parameters you can copy and paste in <em>{{ ini_path }}</em>:</p>
+{% endif %}
+
+<textarea rows="20" cols="100">{{ parameters }}</textarea>
+
+{% if not is_writable %}
+    <p>After writing, please continue installation by pressing the following button.</p>
+{% endif %}
+<form action="{{ path('_installer_start') }} " method="post">
+    <p><button type="submit">Next Step</button></p>
+</form>
+{% endblock %}

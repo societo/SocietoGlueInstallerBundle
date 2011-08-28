@@ -1,0 +1,17 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+
+{% set title = "Error" %}
+
+{% extends 'SocietoGlueInstallerBundle::install_base.html.twig' %}
+
+{% block body %}
+<p class="error">Societo can't access your parameter.ini ({{ ini_path }}) to read. Please confirm its permission.</p>
+
+<p>If you want to continue installation, please reload this page or retry configuration from <a href="{{ url }}">{{ url }}</a></p>
+{% endblock %}

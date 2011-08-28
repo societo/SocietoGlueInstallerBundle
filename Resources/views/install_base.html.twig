@@ -1,0 +1,132 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <title>Societo Installer</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
+
+        <style type="text/css"><!--
+            body {
+                background-color: #A99;
+                font-size: 16px;
+                line-height: 22px;
+            }
+
+            header#site_header {
+                padding: 20px 0;
+            }
+
+            header#site_header h1 {
+                font-size: 40px;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            #site_content {
+                background-color: #F9F2F5;
+                -webkit-border-radius: 10px 10px 10px 10px;
+                -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+                margin: 0 200px;
+                padding: 20px 50px;
+            }
+
+            #site_content header {
+                font-size: 30px;
+            }
+
+            #site_content_body {
+                padding: 20px;
+            }
+
+            #site_footer {
+                margin-top: 10px;
+            }
+
+            #site_footer p {
+                text-align: center;
+                color: #ffffff;
+            }
+
+            th, td {
+                padding: 5px;
+            }
+
+            th, td:first-child {
+                font-weight: bold;
+            }
+
+            .error {
+                color: red;
+            }
+
+            div.error_details {
+                border: 1px solid #999;
+                margin: 12px;
+                padding: 12px;
+            }
+
+        --></style>
+
+        <!--[if (gte IE 6)&(lte IE 8)]>
+          <script type="text/javascript" src="{{ asset('js/selectivizr.js') }}"></script>
+        <![endif]-->
+
+        <!--[if lt IE 9]>
+        <script src="{{ asset('js/html5.js') }}"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <header id="site_header">
+            <h1>Societo Installer</h1>
+        </header>
+
+        <section id="site_content">
+            <header>
+                <h2>{{ title }}</h2>
+
+                {% if app.session.hasFlash('error') %}
+                <p class="flash error">{{ app.session.flash('error') | raw }}</p>
+                {% elseif app.session.hasFlash('notice') %}
+                <p class="flash notice">{{ app.session.flash('notice') | raw }}</p>
+                {% elseif app.session.hasFlash('success') %}
+                <p class="flash success">{{ app.session.flash('success') | raw }}</p>
+                {% else %}
+                <!--[if lt IE 9]>
+                <noscript>
+                    <p class="flash notice">You are using an older version of Internet Explorer. This site use JavaScript for enhance your experiences but you disable it.</p>
+                </noscript>
+                <![endif]-->
+                {% endif %}
+            </header>
+
+            <section id="site_content_body">
+            {% block body %}{% endblock %}
+            </section>
+        </section>
+
+        <footer id="site_footer">
+            <p>&copy; 2011 Kousuke Ebihara</p>
+        </footer>
+
+        <script type="text/javascript">
+        // <![CDATA[
+            $(document).ready(function() {
+                $('.flash').fadeIn('slow');
+            });
+        // ]]>
+        </script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

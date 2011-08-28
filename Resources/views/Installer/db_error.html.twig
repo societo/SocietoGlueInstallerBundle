@@ -1,0 +1,19 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+
+{% set title = "Error" %}
+
+{% extends 'SocietoGlueInstallerBundle::install_base.html.twig' %}
+
+{% block body %}
+<p class="error">Societo receive the following error from a database. If you are not create database yet, please create it first.</p>
+
+<div class="error_details">
+<p>{{ message }}</p>
+</div>
+{% endblock %}

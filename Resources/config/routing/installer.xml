@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="_configurator_home" pattern="/">
+        <default key="_controller">SocietoGlueInstallerBundle:Configurator:check</default>
+    </route>
+
+    <route id="_configurator_step" pattern="/config/step/{index}">
+        <default key="_controller">SocietoGlueInstallerBundle:Configurator:step</default>
+    </route>
+
+    <route id="_configurator_final" pattern="/config/final">
+        <default key="_controller">SocietoGlueInstallerBundle:Configurator:final</default>
+    </route>
+
+    <route id="_installer_start" pattern="/start">
+        <default key="_controller">SocietoGlueInstallerBundle:Installer:start</default>
+    </route>
+
+    <route id="_installer_assets" pattern="/assets">
+        <default key="_controller">SocietoGlueInstallerBundle:Installer:installAssets</default>
+    </route>
+
+    <route id="_installer_table" pattern="/table">
+        <default key="_controller">SocietoGlueInstallerBundle:Installer:createTable</default>
+    </route>
+
+    <route id="_installer_admin" pattern="/admin">
+        <default key="_controller">SocietoGlueInstallerBundle:Installer:admin</default>
+    </route>
+
+    <route id="_installer_create" pattern="/create">
+        <default key="_controller">SocietoGlueInstallerBundle:Installer:create</default>
+    </route>
+</routes>

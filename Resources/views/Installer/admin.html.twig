@@ -1,0 +1,21 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+
+{% set title = "Step5. Create initial data" %}
+
+{% extends 'SocietoGlueInstallerBundle::install_base.html.twig' %}
+
+{% block body %}
+<p>Installer will create initial data for your website.</p>
+<p>Please fill the following information to create the first "administrator" user.</p>
+
+<form action="{{ path('_installer_create') }} " method="post">
+    {{ form_widget(form) }}
+    <p><button type="submit">Next Step</button></p>
+</form>
+{% endblock %}

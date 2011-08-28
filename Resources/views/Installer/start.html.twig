@@ -1,0 +1,29 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+
+{% set title = "Step4. Create schema" %}
+
+{% extends 'SocietoGlueInstallerBundle::install_base.html.twig' %}
+
+{% block body %}
+{% if has_error %}
+<p class="error">Societo tries to create schema to your database but that was failed the following errors:</p>
+<div class="error_details">
+<p>{{ message }}</p>
+</div>
+<p>To continue, please execute the following SQL by your hand.</p>
+{% else %}
+<p>Societo executed the following SQL to install.</p>
+{% endif %}
+
+<textarea rows="20" cols="100" readonly="readonly">{{ sqls | join(";\n") }}</textarea>
+
+<form action="{{ path('_installer_admin') }} " method="post">
+    <p><button type="submit">Next Step</button></p>
+</form>
+{% endblock %}

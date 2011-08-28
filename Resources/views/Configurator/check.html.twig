@@ -1,0 +1,48 @@
+{##
+ # SocietoGlueInstallerBundle
+ # Copyright (C) 2011 Kousuke Ebihara
+ #
+ # This program is under the EPL/GPL/LGPL triple license.
+ # Please see the Resources/meta/LICENSE file that was distributed with this file.
+ #}
+
+{% extends 'SocietoGlueInstallerBundle::install_base.html.twig' %}
+
+{% block body %}
+{% if majors|length %}
+    <h3>Major Problems that need to be fixed now</h3>
+    <p>
+        We have detected <strong>{{ majors|length }}</strong> major problems.
+        You <em>must</em> fix them before continuing:
+    </p>
+    <ol>
+        {% for message in majors %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ol>
+{% endif %}
+
+{% if minors|length %}
+    <h3>Some Recommandations</h3>
+
+    <p>
+        {% if majors|length %}
+        Additionally, we
+        {% else %}
+        We
+        {% endif %}
+        have detected some minor problems that we <em>recommend</em> you to fix to have a better Societo
+        experience:
+
+        <ol>
+            {% for message in minors %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ol>
+    </p>
+{% endif %}
+
+<form action="url" method="get">
+    <p><button type="submit">Begin to install</button></p>
+</form>
+{% endblock %}
