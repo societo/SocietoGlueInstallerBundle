@@ -14,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\DistributionBundle\Controller\ConfiguratorController as BaseConfiguratorController;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * ConfiguratorController.
  *
@@ -36,7 +38,7 @@ class ConfiguratorController extends BaseConfiguratorController
         }
 
         if ($member) {
-            throw new \Exception();
+            throw new NotFoundHttpException();
         }
     }
 
